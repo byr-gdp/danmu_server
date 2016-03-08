@@ -53,11 +53,13 @@ app.get('/get', function(req, res) {
 app.post('/post', function(req, res) {
   var msg       = req.body.msg;
   var timestamp = Math.round(new Date().getTime() / 1000);
+  var mode      = parseInt(req.body.mode);
 
   items.shift();
   items.push({
     msg: msg,
     timestamp: timestamp,
+    mode: mode
   });
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE,HEAD, OPTIONS');
